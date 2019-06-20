@@ -218,6 +218,17 @@ class Clientes extends CI_Controller {
 	
 	}
 
+	public function pesquisar1() {
+
+		$this->template->set('title', 'Resultado');
+
+		$data['pagination'] = "";
+
+		$data['cliente'] = $this->model->search1();
+		
+		$this->template->load('layout', 'clientes_lista.phtml', $data);
+	}
+
 }
 
 

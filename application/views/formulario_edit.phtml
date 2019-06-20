@@ -9,12 +9,12 @@
  
 	<input type="hidden" name="id_formulario" value="<?php echo $dados_formulario[0]->id_formulario; ?>"/>
  	<div class="row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-6">
 			<label for="titulo">Titulo:</label><br/>
 			<input type="text" class="form-control" name="titulo"	value="<?php echo $dados_formulario[0]->titulo; ?>"/>
 			<div class="error"><?php echo form_error('titulo'); ?></div>
 		</div> 	
-		<div class="form-group col-md-5">
+		<div class="form-group col-md-6">
 			<label for="descricao">Descrição:</label><br/>
 			<input type="text" class="form-control" name="descricao" 	value="<?php echo $dados_formulario[0]->descricao; ?>"/>
 			<div class="error"><?php echo form_error('descricao'); ?></div>
@@ -22,20 +22,46 @@
 	</div>
 
 	<div class="row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-12">
 			<label for="conteudo">Conteudo:</label><br/>
-			<input type="text" class="form-control" name="conteudo" value="<?php echo $dados_formulario[0]->conteudo; ?>"/>
+			<input type="text" class="form-control" name="conteudo_edit" id="conteudo_edit" />
+			<div class="error"><?php echo form_error('conteudo'); ?></div>
+		</div>
+	</div>
+
+	<div class="row" type="hidden">
+        <div class="form-group col-md-12">
+			<input type="hidden" class="form-control" name="conteudo" id="conteudo"  value="<?php echo $dados_formulario[0]->conteudo; ?>"/>
+			<div class="error"><?php echo form_error('conteudo'); ?></div>
+		</div>
+	</div>
+
+	<div class="row" type="hidden">
+        <div class="form-group col-md-12">
+			<input type="hidden" class="form-control" name="conteudo_edit_ck" id="conteudo_edit_ck" />
 			<div class="error"><?php echo form_error('conteudo'); ?></div>
 		</div>
 	</div>
 
  	<div class="row">
         <div class="col-md-12">
-            <input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+            <input type="submit" class="btn btn-primary" name="bteditar" id="bteditar"  value="Salvar" /> 
                 <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
         </div>
     </div>
 	
+	
+    <script>
+		CKEDITOR.replace( 'conteudo_edit' );
+		CKEDITOR.instances.conteudo_edit.setData($( "#conteudo" ).val())
+
+		$( "#bteditar" ).click(function() {
+            $( "#conteudo_edit_ck" ).val(CKEDITOR.instances.conteudo_edit.getData());
+        });
+
+    </script>
+
+
 	<?php echo form_close(); ?>
 </body>
 </html>

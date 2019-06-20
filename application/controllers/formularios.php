@@ -90,7 +90,7 @@ class Formularios extends CI_Controller {
 			/* Recebe os dados do formul�rio (vis�o) */
 			$data['titulo'] = ucwords($this->input->post('titulo'));
 			$data['descricao'] = ucwords($this->input->post('descricao'));
-			$data['conteudo'] = $this->input->post('conteudo');
+			$data['conteudo'] = $this->input->post('conteudo_ck');
 						
 			/* Chama a fun��o inserir do modelo */
 			if ($this->model->inserir($data)) {
@@ -138,7 +138,7 @@ class Formularios extends CI_Controller {
 			$data['id_formulario'] = ucwords($this->input->post('id_formulario'));
 			$data['titulo'] = ucwords($this->input->post('titulo'));
 			$data['descricao'] = ucwords($this->input->post('descricao'));
-			$data['conteudo'] = $this->input->post('conteudo');	 
+			$data['conteudo'] = $this->input->post('conteudo_edit_ck');	 
 			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
 			if ($this->model->atualizar($data)) {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Formulario editado com sucesso</div>");

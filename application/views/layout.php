@@ -11,7 +11,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <link rel="stylesheet" href= "<?php echo base_url(); ?>includes/plugins/jQueryUI/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
  
+
 
   <title>projeto de software</title>
   <!-- Tell the browser to be responsive to screen width -->

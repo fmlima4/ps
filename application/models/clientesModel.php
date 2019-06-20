@@ -19,7 +19,7 @@ class clientesModel extends CI_Model {
 			$this->db->limit($limit,$offset);
 		}
 
-		$this->db->select('nome, telefone, id_cliente, cidade,');
+		$this->db->select('nome, telefone, id_cliente, cidade');
 	 	$this->db->from('cliente');
 		$query = $this->db->get(); 
 	    return $query->result();
@@ -81,6 +81,17 @@ class clientesModel extends CI_Model {
 		$query = $this->db->get(); 
 	    return $query->result();
 	}
+
+	public function search1(){
+
+		$termo1 = $this->input->post('search1');
+		
+		$this->db->select('nome, telefone, id_cliente, cidade');
+		$this->db->from('cliente');
+		$this->db->like('nome', $termo1);
+		$query = $this->db->get(); 
+		return $query->result();
+		}
 
 }
 

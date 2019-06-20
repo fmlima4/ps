@@ -6,10 +6,23 @@
 </head>
 
 <body>
-  
+
+<div class="row" >
+  <form action="/ps/clientes/pesquisar1" method="post">
+    <div class="col-sm-8">
+        <input name="search1" class="form-control" id="search1" type="text"   placeholder="Filtrar Cliente " >   
+    </div>
+
+    <div class="col-sm-1">
+      <button class="btn btn-primary btn-sm pull-left" type="submit">Filtrar</button>
+    </div>
+
+  </form>
+</div>
+ 
 	<div class="col-sm-1">
 		<a title="newCliente" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_cliente">Novo Cliente</a>
-	</div>
+	</div>  
 
 	<div id="list" class="row">
 		<div class="table-responsive col-md-12">
