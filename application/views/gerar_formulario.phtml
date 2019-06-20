@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+
+<?php echo form_open('clientes/insere_novo_documento', 'id="form-gerar_formulario"'); ?>
+    
+    <form action="" method="post" ENCTYPE="multipart/form-data">
+    <input type="hidden" name="id_cliente" value="<?php echo $dados_cliente[0]->id_cliente; ?>"/>
+    <div class="row">
+      <div class="form-group col-md-5">
+			<label for="nome">Cliente:</label><br/>
+			<input type="text" class="form-control" name="nome"  id="nome"value="<?php echo $dados_cliente[0]->nome; ?>"/>
+			<div class="error"><?php echo form_error('cnome'); ?></div>
+		</div> 	          
+    </div>
+
+    <div class="row">
+    <div class="form-group col-md-5" >
+            <label for="formulario">Formulario</label> 
+            <input type="text" class="form-control" id="formulario" name="formulario" required value="<?php echo isset($view_formulario) ? $view_formulario: '' ; ?>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="btsalvar" value="Gerar Formulario" /> 
+                <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+
+	<?php echo form_close(); ?>
+
+</body>
+</html>

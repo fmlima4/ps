@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  
+	<div class="col-sm-1">
+		<a title="newCliente" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_cliente">Novo Cliente</a>
+	</div>
+
+	<div id="list" class="row">
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped" cellspacing="30" cellpadding="30" id="clientes">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Telefone</th>
+						<th>Cidade</th>
+						<th class="actions">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+
+					<?php foreach ( $cliente as $cliente ) {?>
+						<tr>
+							<td><?php echo $cliente->id_cliente; ?></td> 
+							<td><?php echo $cliente->nome; ?></td>    
+							<td><?php echo $cliente->telefone; ?></td>
+							<td><?php echo $cliente->cidade; ?> </td>
+							<td class="actions">
+                <a title="Gerar Novo Documento" class="btn btn-primary btn-sm  fa fa-file-text"
+                    href="<?php echo base_url() . 'clientes/novo_documento/' . $cliente->id_cliente; ?>" ></a>
+                <a title="Documentos" class="btn btn-secondary btn-sm fa fa-folder"
+                    href="<?php echo base_url() . 'clientes/historico/' . $cliente->id_cliente; ?>"></a>
+                <a title="Editar" class="btn btn-warning btn-sm fa fa-pencil-square-o"
+                    href="<?php echo base_url() . 'clientes/editar/' . $cliente->id_cliente; ?>"></a>
+                <a title="Deletar" class="btn btn-danger btn-sm fa fa-trash" 
+                    href="<?php echo base_url() . 'clientes/deletar/' . $cliente->id_cliente; ?>" onclick="return confirm('Confirma a exclusço deste registro?')"></a>
+							</td>		
+
+						</tr>	 	 	  	
+						  	
+				 	<?php } ?>
+				</tbody>
+			</table>
+			 <h4><?php echo $this->session->flashdata('mensagem');?></h4>
+        <h4><?php echo $this->session->flashdata('mensagemErro');?></h4>
+		</div>
+	</div>	
+
+    <div class="row">
+      <div class="col-sm-10" >
+        <?php echo $pagination; ?>
+      </div>
+    </div>
+
+</body>
+
+<!-- Modal de inserir cliente-->
+<div class="modal fade" id="new_cliente" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header  bg-red">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Adicionar Cliente</h4>
+      </div>
+      <div class="modal-body">
+       
+  <?php echo form_open('clientes/inserir', 'id="form-pessoas"'); ?>
+    
+    <form action="" method="post" ENCTYPE="multipart/form-data">
+      <div class="row">
+        <div class="form-group col-md-5">
+            <label for="nome">Nome do solicitante</label> 
+            <input type="text" class="form-control" id="nome" name="nome"
+                placeholder="informe o nome do solicitante" required
+                value="<?php echo isset($view_nome) ? $view_nome: '' ; ?>">
+        </div>     
+        <div class="form-group col-md-5">
+            <label for="cpf">CPF</label> 
+            <input type="text" class="form-control" id="cpf" name="cpf"
+                placeholder="informe o CPF" required
+                value="<?php echo isset($view_cpf) ? $view_cpf: '' ; ?>">
+        </div>
+    </div>
+    
+
+     <div class="row">
+        <div class="form-group col-md-5">
+            <label for="nome">Telefone</label> 
+            <input type="text" class="form-control" id="telefone" name="telefone"
+                placeholder="informe o telefone" required
+                value="<?php echo isset($view_telefone) ? $view_telefone: '' ; ?>">
+        </div>
+        <div class="form-group col-md-5">
+            <label for="responsavel">Responsavel</label> 
+            <input type="text" class="form-control" id="responsavel" name="responsavel"
+                placeholder="informe um responsavel" required 
+                value="<?php echo isset($view_responsavel) ? $view_responsavel : '' ; ?>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-5">
+            <label for="CEP">CEP</label> 
+            <input type="text" class="form-control" id="cep" name="cep"
+                placeholder="informe um CEP" required
+                value="<?php echo isset($view_cep) ? $view_cep : '' ; ?>">
+        </div>
+        <div class="form-group col-md-5">
+            <label for="cidade">Cidade</label> 
+            <input type="text" class="form-control" id="cidade" name="cidade"
+                placeholder="informe uma cidade" required
+                value="<?php echo isset($view_cidade) ? $view_cidade : '' ; ?>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-5">
+            <label for="rua">Rua</label> 
+            <input type="text" class="form-control" id="rua" name="rua"
+                placeholder="informe a rua" required
+                value="<?php echo isset($view_rua) ? $view_rua : '' ; ?>">
+        </div>
+        <div class="form-group col-md-5">
+            <label for="bairro">Bairro</label> 
+            <input type="text" class="form-control" id="bairro" name="bairro"
+                placeholder="informe uma cidade" required
+                value="<?php echo isset($view_bairro) ? $view_bairro : '' ; ?>">
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+                <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+        </div>
+
+    <?php echo form_close(); ?>
+
+		</div>
+
+      </div>
+    </div>
+  </div>
+</div> <!-- /.modal -->
+
+<!-- Modal de inserir documento-->
+<div class="modal fade" id="new_document" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header  bg-red">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Adicionar Documento</h4>
+      </div>
+      <div class="modal-body">
+       
+  
+<?php echo form_open('formularios/gerar', 'id="form-gerar_formulario"'); ?>
+    
+    <form action="" method="post" ENCTYPE="multipart/form-data">
+      <div class="row">
+        <div class="form-group col-md-5">
+            <label for="cliente">Cliente</label> 
+            <input type="text" class="form-control " id="cliente" name="cliente" placeholder="informe o nome o Cliente" required  >
+        </div>    
+    </div>
+
+    <div class="row">
+    <div class="form-group col-md-5" >
+            <label for="formulario">Formulario</label> 
+            <input type="text" class="form-control " id="formulario" name="formulario" required value="<?php echo isset($view_formulario) ? $view_formulario: '' ; ?>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="btsalvar" value="Gerar Formulario" /> 
+                <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+
+	<?php echo form_close(); ?>
+
+		</div>
+
+      </div>
+    </div>
+  </div>
+</div> <!-- /.modal -->
+
+</html>

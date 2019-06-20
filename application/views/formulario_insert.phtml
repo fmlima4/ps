@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
+    
+</head>
+<body>
+
+<?php echo form_open('formularios/inserir', 'id="form-formulario"'); ?>
+    
+    <form action="" method="post" ENCTYPE="multipart/form-data">
+      <div class="row">
+        <div class="form-group col-md-6">
+            <label for="titulo">Titulo</label> 
+            <input type="text" class="form-control" id="titulo" name="titulo"
+                placeholder="informe o nome o Titulo" required
+                value="<?php echo isset($view_titulo) ? $view_titulo: '' ; ?>">
+        </div>     
+        <div class="form-group col-md-6">
+            <label for="descricao">Descricao</label> 
+            <input type="text" class="form-control" id="descricao" name="descricao"
+                placeholder="informe uma descrição" required
+                value="<?php echo isset($view_descricao) ? $view_descricao: '' ; ?>">
+        </div>
+    </div>
+    <div class="row">
+	<div class="form-group col-md-12">
+            <label for="conteudo">Conteudo</label> 
+            <textArea type="text" class="form-control" id="conteudo" name="conteudo" placeholder="preencha o conteudo" required></textArea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+                <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+
+	<?php echo form_close(); ?>
+
+    <script>
+    ClassicEditor
+        .create( document.querySelector( '#conteudo' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
+	
+</body>
+</html>

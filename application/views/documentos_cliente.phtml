@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  
+	<div id="list" class="row">
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped" cellspacing="30" cellpadding="30" id="formularios">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Formulario</th>
+						<th>Data</th>
+						<th class="actions">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+
+					<?php foreach ( $documentos_cliente as $documento_cliente ) {?>
+						<tr>
+							<td><?php echo $documento_cliente->id; ?></td> 
+							<td><?php echo $documento_cliente->formulario; ?></td>    
+							<td><?php echo $documento_cliente->data_inclusao; ?></td>
+							<td class="actions">
+                            <a title="Baixar" class="btn btn-success btn-sm fa fa-download"
+                            href="<?php echo base_url() . 'clientes/baixar_doc/' . $documento_cliente->id; ?>"></a>
+               			    </td>		
+						</tr>	 	 	  	
+						  	
+				 	<?php } ?>
+				</tbody>
+			</table>
+		</div>
+	</div>	
+
+</body>
+</html>
