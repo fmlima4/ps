@@ -65,10 +65,25 @@ class clientesModel extends CI_Model {
 
 	function novo_documento($id_cliente) {
 	    $this->db->where('id_cliente', $id_cliente);
-	    $query = $this->db->get('cliente');
+		$query = $this->db->get('cliente');
 	    return $query->result();
 	}
 
+	//busca dados do paciente
+	function busca_cliente($data) {
+		$this->db->select('nome');
+		$this->db->where('id_cliente', $data);
+		$query = $this->db->get('cliente')->result_array(); 
+	    return $query;
+	}
+	//busca conteudo do formulario
+	function busca_formulario($data) {
+		$this->db->select('conteudo');
+		$this->db->where('id_formulario', $data);
+		$query = $this->db->get('formulario')->result_array();
+	    return $query;
+	}
+	//insere formulario com conteudo preenchido no banco
 	function inserir_documento($data) {
 		return $this->db->insert('fomularios_cliente', $data);
 	}

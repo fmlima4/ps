@@ -191,20 +191,28 @@ class Clientes extends CI_Controller {
 	            	$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> preencha todos os campos antes de salvar </div>");
 				redirect('clientes');
 		} else 
-			/* Sen�o obt�m os dados do formul�rio */
+			//busca daddos para realizar a subistitiuição de campos
+			$dados_paciente = $this->model->busca_cliente($this->input->post('id_cliente'));
+			$dados_formulario = $this->model->busca_formulario($this->input->post('formulario'));		
+			$nome = "{nome}";
+
+			//faz a substituição
+			$conteudo_novo = str_replace($nome, $dados_paciente [0]['nome'], $dados_formulario[0]['conteudo']);
+			
+			//dados a serem salvo na tabela fomrularios_cliente
 			$data['cliente'] = $this->input->post('id_cliente');
 			$data['formulario'] = $this->input->post('formulario');
 			$data['data_inclusao'] = date("Y-m-d"); 
-						
-	 
+			$data['conteudo'] = $conteudo_novo;
+			
 			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
 			if ($this->model->inserir_documento($data)) {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Cliente editado com sucesso</div>");
 				redirect('clientes');
 			} else {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao editar cliente</div>");
-			}
 		}
+	}
 
 	function historico($id_cliente)
 	{
