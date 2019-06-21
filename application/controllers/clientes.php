@@ -194,16 +194,21 @@ class Clientes extends CI_Controller {
 			//busca daddos para realizar a subistitiuição de campos
 			$dados_paciente = $this->model->busca_cliente($this->input->post('id_cliente'));
 			$dados_formulario = $this->model->busca_formulario($this->input->post('formulario'));		
+			//variaveis procuradas no conteudo do formulario que podem ser substituidas
 			$nome = "{nome}";
+			$cpf = "{cpf}";
 
 			//faz a substituição
-			$conteudo_novo = str_replace($nome, $dados_paciente [0]['nome'], $dados_formulario[0]['conteudo']);
-			
+			$conteudo_nome = str_replace($nome, $dados_paciente[0]['nome'], $dados_formulario[0]['conteudo']);
+			$conteudo_cpf = str_replace($cpf,$dados_paciente[0]['cpf'],$conteudo_nome);
+
+			$conteudo_final = $conteudo_cpf;
+
 			//dados a serem salvo na tabela fomrularios_cliente
 			$data['cliente'] = $this->input->post('id_cliente');
 			$data['formulario'] = $this->input->post('formulario');
 			$data['data_inclusao'] = date("Y-m-d"); 
-			$data['conteudo'] = $conteudo_novo;
+			$data['conteudo'] = $conteudo_final;
 			
 			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
 			if ($this->model->inserir_documento($data)) {

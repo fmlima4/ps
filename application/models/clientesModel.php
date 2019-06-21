@@ -71,7 +71,7 @@ class clientesModel extends CI_Model {
 
 	//busca dados do paciente
 	function busca_cliente($data) {
-		$this->db->select('nome');
+		$this->db->select('nome,cpf');
 		$this->db->where('id_cliente', $data);
 		$query = $this->db->get('cliente')->result_array(); 
 	    return $query;
