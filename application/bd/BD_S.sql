@@ -28,3 +28,11 @@ data_inclusao varchar(300) NOT NULL,
 CONSTRAINT fk_fomularios_cliente1 FOREIGN KEY (cliente)references cliente(id_cliente),
 CONSTRAINT fk_fomularios_cliente2 FOREIGN KEY (formulario)references formulario(id_formulario)
 );
+
+CREATE TABLE users (
+ id tinyint(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ username varchar(10) NOT NULL,
+ password varchar(100) NOT NULL,
+ cargo varchar(100) NOT NULL,
+ ativo int(10) NOT NULL
+ );
