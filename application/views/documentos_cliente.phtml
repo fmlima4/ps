@@ -13,8 +13,8 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Formulario</th>
-						<th>Data</th>
+						<th>Processo</th>
+						<th>Nome</th>
 						<th class="actions">Ações</th>
 					</tr>
 				</thead>
@@ -25,10 +25,10 @@
 						<tr>
 							<td><?php echo $documento_cliente->id; ?></td> 
 							<td><?php echo $documento_cliente->formulario; ?></td>    
-							<td><?php echo $documento_cliente->data_inclusao; ?></td>
+							<td><?php echo $documento_cliente->nome; ?></td>
 							<td class="actions">
                             <a title="Baixar" class="btn btn-success btn-sm fa fa-download"
-                            href="<?php echo base_url() . 'clientes/baixar_doc/' . $documento_cliente->id; ?>"></a>
+														href="<?php echo base_url() . 'gerarpdf.php?nome=' . $documento_cliente->nome.'&formulario=' .  $documento_cliente->formulario ?>"></a>
                			    </td>		
 						</tr>	 	 	  	
 						  	

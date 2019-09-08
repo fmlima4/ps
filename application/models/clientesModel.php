@@ -89,7 +89,7 @@ class clientesModel extends CI_Model {
 	}
 
 	function listar_documentos($id_cliente) {
-		$this->db->select('id, formulario, cliente,fomularios_cliente.data_inclusao');
+		$this->db->select('id,nome, formulario, cliente,fomularios_cliente.data_inclusao');
 		$this->db->where('id_cliente', $id_cliente);
 		$this->db->from('cliente');
 		$this->db->join('fomularios_cliente', 'fomularios_cliente.cliente = cliente.id_cliente');

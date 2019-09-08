@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SuperAR CRM</title>
+        <title></title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -41,7 +41,7 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                             <div class="form-top">
                                 <div class="form-top-left">
-                                    <h3>Login CRM SuperAR</h3>
+                                    <h3>Login</h3>
                                     <p>Informe seu Usuario e senha:</p>
                                     <h3 style="color:red;"><?php echo $this->session->flashdata('alert');?></h3>
                                 </div>
@@ -91,7 +91,7 @@
         </div>
 
 
-        <!-- Javascript -->
+        Javascript
         <script src="includes/loginstyle/js/jquery-1.11.1.min.js"></script>
         <script src="includes/loginstyle/bootstrap/js/bootstrap.min.js"></script>
         <script src="includes/loginstyle/js/jquery.backstretch.min.js"></script>

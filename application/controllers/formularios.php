@@ -94,10 +94,10 @@ class Formularios extends CI_Controller {
 						
 			/* Chama a fun��o inserir do modelo */
 			if ($this->model->inserir($data)) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Cliente salvo com sucesso</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Formulario salvo com sucesso</div>");
 				redirect('formularios');
 			} else {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao inserir cliente</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao inserir Formulario</div>");
 				redirect('formularios');
 			}
 

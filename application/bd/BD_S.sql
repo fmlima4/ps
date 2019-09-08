@@ -11,20 +11,18 @@ cidade varchar(30) NOT NULL,
 data_inclusao varchar(30) NOT NULL
 );
 
-
-
 CREATE TABLE formulario(
  id_formulario tinyint(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
  titulo varchar(10) NOT NULL,
  descricao varchar(100) NOT NULL
  );
 
-
 create table fomularios_cliente(
 id tinyint(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 cliente tinyint NOT NULL,
 formulario tinyint NOT NULL,
 data_inclusao varchar(300) NOT NULL,
+conteudo varchar(5000),
 CONSTRAINT fk_fomularios_cliente1 FOREIGN KEY (cliente)references cliente(id_cliente),
 CONSTRAINT fk_fomularios_cliente2 FOREIGN KEY (formulario)references formulario(id_formulario)
 );
