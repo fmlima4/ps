@@ -62,6 +62,8 @@ class Questoes extends CI_Controller {
 		/* Define as regras para valida��o */
 		$this->form_validation->set_rules('titulo', 'titulo', 'required|max_length[40]');
 		$this->form_validation->set_rules('descricao', 'descrição', 'trim|required|max_length[20]');
+		$this->form_validation->set_rules('tipo', 'tipo', 'trim|required|max_length[20]');
+
 
 		/* Executa a valida��o e caso houver erro chama a fun��o index do controlador */
 		if ($this->form_validation->run() === FALSE) {
@@ -74,7 +76,8 @@ class Questoes extends CI_Controller {
 			/* Recebe os dados do formul�rio (vis�o) */
 			$data['titulo'] = ucwords($this->input->post('titulo'));
 			$data['descricao'] = ucwords($this->input->post('descricao'));
-			
+			$data['tipo'] = ucwords($this->input->post('tipo'));
+
 			
 			/* Chama a fun��o inserir do modelo */
 			if ($this->model->inserir($data)) {
@@ -88,7 +91,7 @@ class Questoes extends CI_Controller {
 		}
 	}
 	
-	function editar($id_cliente)  {
+	function editar($id_questao)  {
 			
 		/* Aqui vamos definir o t�tulo da p�gina de edi��o */
 		$this->template->set('title', 'Editar questoes');
@@ -113,6 +116,7 @@ class Questoes extends CI_Controller {
 		   na fun��o inserir do controlador, por�m estou mudando a forma de escrita */
 			 $this->form_validation->set_rules('titulo', 'titulo', 'required|max_length[40]');
 			 $this->form_validation->set_rules('descricao', 'descrição', 'trim|required|max_length[20]');
+			 $this->form_validation->set_rules('tipo', 'tipo', 'trim|required|max_length[20]');
 	
 		/* Executa a valida��o e caso houver erro chama a fun��o editar do controlador novamente */
 		if ($this->form_validation->run() === FALSE) {
@@ -120,105 +124,34 @@ class Questoes extends CI_Controller {
 				redirect('questoes');
 		} else 
 			/* Sen�o obt�m os dados do formul�rio */
-			$data['id_cliente'] = ucwords($this->input->post('id_cliente'));
-			$data['nome'] = ucwords($this->input->post('nome'));
+			$data['id_questao'] = ucwords($this->input->post('id_questao'));
 			$data['titulo'] = ucwords($this->input->post('titulo'));
 			$data['descricao'] = ucwords($this->input->post('descricao'));
+			$data['tipo'] = ucwords($this->input->post('tipo'));
 			
 	 
 			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
 			if ($this->model->atualizar($data)) {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Questão editada com sucesso</div>");
-				redirect('clientes');
+				redirect('questoes');
 			} else {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao editar cliente</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao editar Questão</div>");
 			}
 		}
 	
-	function deletar($ccod) {
+	function deletar($id_questao) {
 	 					
 		/* Executa a fun��o deletar do modelo passando como par�metro o id da pessoa */
-		$confirmacao = $this->model->deletar($ccod);
+		$confirmacao = $this->model->deletar($id_questao);
 		if ($confirmacao == 1) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-warning'> Cliente deletado com sucesso</div>");
-			redirect('clientes');
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-warning'> Questão deletado com sucesso</div>");
+			redirect('questoes');
 			} else {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao deletar cliente</div>");
-					redirect('clientes');
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao deletar Questão</div>");
+					redirect('questoes');
 			}
 	}
 
-
-	function novo_documento($id_cliente)  {
-		
-		$this->template->set('title', 'Adicionar Formuario');
-	 
-		/* Busca os dados da pessoa que ser� editada */
-		$data['dados_cliente'] = $this->model->novo_documento($id_cliente);
-	 
-	 	/* Carrega a p�gina de edi��o com os dados da pessoa */
-		$this->template->load('layout', 'gerar_formulario.phtml', $data);
-
-	}
-
-	function insere_novo_documento()  {
-		
-		/* Carrega a biblioteca do CodeIgniter respons�vel pela valida��o dos formul�rios */
-		$this->load->library('form_validation');
-	 
-		/* Define as tags onde a mensagem de erro ser� exibida na p�gina */
-		$this->form_validation->set_error_delimiters('<span>', '</span>');
-	 
-		/* Aqui estou definindo as regras de valida��o do formul�rio, assim como 
-		   na fun��o inserir do controlador, por�m estou mudando a forma de escrita */
-			 $this->form_validation->set_rules('nome', 'Cliente', 'required');
-			 $this->form_validation->set_rules('formulario', 'Formulario', 'trim|required');
-			 
-	
-		/* Executa a valida��o e caso houver erro chama a fun��o editar do controlador novamente */
-		if ($this->form_validation->run() === FALSE) {
-	            	$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> preencha todos os campos antes de salvar </div>");
-				redirect('clientes');
-		} else 
-			//busca daddos para realizar a subistitiuição de campos
-			$dados_paciente = $this->model->busca_cliente($this->input->post('id_cliente'));
-			$dados_formulario = $this->model->busca_formulario($this->input->post('formulario'));		
-			//variaveis procuradas no conteudo do formulario que podem ser substituidas
-			$nome = "{nome}";
-			$cpf = "{cpf}";
-
-			//faz a substituição
-			$conteudo_nome = str_replace($nome, $dados_paciente[0]['nome'], $dados_formulario[0]['conteudo']);
-			$conteudo_cpf = str_replace($cpf,$dados_paciente[0]['cpf'],$conteudo_nome);
-
-			$conteudo_final = $conteudo_cpf;
-
-			//dados a serem salvo na tabela fomrularios_cliente
-			$data['cliente'] = $this->input->post('id_cliente');
-			$data['formulario'] = $this->input->post('formulario');
-			$data['data_inclusao'] = date("Y-m-d"); 
-			$data['conteudo'] = $conteudo_final;
-			
-			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
-			if ($this->model->inserir_documento($data)) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Cliente editado com sucesso</div>");
-				redirect('clientes');
-			} else {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao editar cliente</div>");
-		}
-	}
-
-	function historico($id_cliente)
-	{
-		$this->template->set('title', 'Lista de documentos');
-		$data['documentos_cliente'] = $this->model->listar_documentos($id_cliente);
-		$this->template->load('layout', 'documentos_cliente.phtml', $data);
-	}
-
-	function baixar_doc($id_cliente)
-	{
-	
-	}
 
 	public function pesquisar1() {
 

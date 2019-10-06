@@ -7,41 +7,32 @@
 <body>
 	<?php echo form_open('usuarios/atualizar', 'id="form-usuarios"'); ?>
  
-	<input type="hidden" name="id" value="<?php echo $dados_usuario[0]->id; ?>"/>
+	<input type="hidden" name="id_usuario" value="<?php echo $dados_usuario[0]->id_usuario; ?>"/>
  	<div class="row">
         <div class="form-group col-md-5">
-			<label for="username">Username:</label><br/>
-			<input type="text" class="form-control" name="username"	value="<?php echo $dados_usuario[0]->username; ?>"/>
-			<div class="error"><?php echo form_error('username'); ?></div>
+			<label for="nome_usuario">nome_usuario:</label><br/>
+			<input type="text" class="form-control" name="nome_usuario"	value="<?php echo $dados_usuario[0]->nome_usuario; ?>"/>
+			<div class="error"><?php echo form_error('nome_usuario'); ?></div>
 		</div> 	
 		<div class="form-group col-md-5">
-			<label for="email">email:</label><br/>
-			<input type="text" class="form-control" name="email" 	value="<?php echo $dados_usuario[0]->email; ?>"/>
-			<div class="error"><?php echo form_error('email'); ?></div>
+			<label for="email_usuario">email:</label><br/>
+			<input type="text" class="form-control" name="email_usuario" 	value="<?php echo $dados_usuario[0]->email_usuario; ?>"/>
+			<div class="error"><?php echo form_error('email_usuario'); ?></div>
 		</div> 	
 	</div>
 
 	<div class="row">
 		<div class="form-group col-md-5">
-			<label for="senha">Senha:</label><br/>
-			<input type="text" class="form-control" name="senha" value="<?php echo $dados_usuario[0]->password; ?>"/>
-			<div class="error"><?php echo form_error('senha'); ?></div>
+			<label for="password">Senha:</label><br/>
+			<input type="text" class="form-control" name="password" value="<?php echo $dados_usuario[0]->password; ?>"/>
+			<div class="error"><?php echo form_error('password'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
-			<label for="ativo">Ativo:</label><br/>
-			<input type="text" class="form-control" name="ativo" value="<?php echo $dados_usuario[0]->ativo; ?>"/>
-			<div class="error"><?php echo form_error('ativo'); ?></div>
+			<label for="tipo_usuario">Tipo:</label><br/>
+			<input type="text" class="form-control" name="tipo_usuario" value="<?php echo $dados_usuario[0]->tipo_usuario; ?>"/>
+			<div class="error"><?php echo form_error('tipo_usuario'); ?></div>
 		</div> 
 	</div>
-
-	<div class="row">
-		<div class="form-group col-md-5">
-			<label for="cargo">Cargo:</label><br/>
-			<input type="text" class="form-control" name="cargo" value="<?php echo $dados_usuario[0]->cargo; ?>"/>
-			<div class="error"><?php echo form_error('cargo'); ?></div>
-		</div> 
-	</div>
-
 
  	<div class="row">
         <div class="col-md-12">

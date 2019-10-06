@@ -12,13 +12,13 @@ class Login extends CI_Controller{ // criação da classe Login
     public function autenticar(){
  
         $this->load->model("usuarios_model");// chama o modelo usuarios_model
-        $username = $this->input->post("username");// pega via post o email que venho do formulario
+        $email = $this->input->post("email");// pega via post o email que venho do formulario
         $password = $this->input->post("password"); // pega via post a senha que venho do formulario
-        $usuario = $this->usuarios_model->buscaPorEmailSenha($username,$password); // acessa a função buscaPorEmailSenha do modelo
+        $usuario = $this->usuarios_model->buscaPorEmailSenha($email,$password); // acessa a função buscaPorEmailSenha do modelo
          
         if($usuario){
             $this->session->set_userdata('usuario_logado', $usuario);
-            Redirect('http://localhost/ps/clientes');
+            Redirect('http://localhost/ps/usuarios');
         }else{
              $this->session->set_flashdata('alert', 'Usuario ou senha incorretos');
                 }

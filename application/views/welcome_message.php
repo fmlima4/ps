@@ -53,8 +53,8 @@
                             <?php echo form_open("login/autenticar"); ?>
                                 <form role="form" action="" method="post" class="login-form">
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-username">Username</label>
-                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                        <label class="sr-only" for="form-username">Email</label>
+                                        <input type="text" name="email" placeholder="Email..." class="form-username form-control" id="form-email">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Password</label>

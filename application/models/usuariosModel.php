@@ -12,14 +12,14 @@ class usuariosModel extends CI_Model {
 		return $this->db->insert('users', $data);
 	}
 
-	function listar($sort = 'id', $order = 'asc', $limit =null, $offset = null) {
+	function listar($sort = 'id_usuario', $order = 'asc', $limit =null, $offset = null) {
 		$this->db->order_by($sort, $order);
 
 		if($limit){
 			$this->db->limit($limit,$offset);
 		}
 
-		$this->db->select('id,username, cargo, ativo');
+		$this->db->select('id_usuario, nome_usuario,email_usuario, tipo_usuario');
 	 	$this->db->from('users');
 		$query = $this->db->get(); 
 	    return $query->result();
@@ -29,20 +29,20 @@ class usuariosModel extends CI_Model {
 		return $this->db->count_all($this->table);
 	}
 
-	function editar($id) {
-	    $this->db->where('id', $id);
+	function editar($id_usuario_usuario) {
+	    $this->db->where('id_usuario', $id_usuario_usuario);
 	    $query = $this->db->get('users');
 	    return $query->result();
 	}
 	 
 	function atualizar($data) {
-	    $this->db->where('id', $data['id']);
+	    $this->db->where('id_usuario', $data['id_usuario']);
 	    $this->db->set($data);
 	    return $this->db->update('users');
 	}
 	 
-	function deletar($id) {
-    $this->db->where('id', $id);    
+	function deletar($id_usuario_usuario) {
+    $this->db->where('id_usuario', $id_usuario_usuario);    
     $db_debug = $this->db->db_debug; //salve a configuração
     $this->db->db_debug = FALSE; //desabilita o debug para consultas
 
@@ -65,7 +65,7 @@ class usuariosModel extends CI_Model {
 
 	function busca_users($data) {
 		$this->db->select('username');
-		$this->db->where('id', $data);
+		$this->db->where('id_usuario', $data);
 		$query = $this->db->get('users')->result_array(); 
 	    return $query;
 	}

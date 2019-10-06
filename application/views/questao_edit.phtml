@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    
+</head>
+<body>
+	<?php echo form_open('questoes/atualizar', 'id="form-questao"'); ?>
+ 
+	<input type="hidden" name="id_questao" value="<?php echo $dados_questao[0]->id_questao; ?>"/>
+ 	<div class="row">
+        <div class="form-group col-md-5">
+			<label for="titulo">titulo:</label><br/>
+			<input type="text" class="form-control" name="titulo"	value="<?php echo $dados_questao[0]->titulo; ?>"/>
+			<div class="error"><?php echo form_error('titulo'); ?></div>
+		</div> 	
+		<div class="form-group col-md-5">
+			<label for="tipo">tipo:</label><br/>
+			<input type="text" class="form-control" name="tipo" 	value="<?php echo $dados_questao[0]->tipo; ?>"/>
+			<div class="error"><?php echo form_error('tipo'); ?></div>
+		</div> 	
+	</div>
+
+	<div class="row">
+		<div class="form-group col-md-5">
+			<label for="descricao">descricao:</label><br/>
+			<input type="text" class="form-control" name="descricao" value="<?php echo $dados_questao[0]->descricao; ?>"/>
+			<div class="error"><?php echo form_error('descricao'); ?></div>
+		</div>
+	</div>
+
+ 	<div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+                <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+ 
+	<?php echo form_close(); ?>
+</body>
+</html>

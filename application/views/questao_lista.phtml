@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+<div class="row" >
+  <form action="/ps/usuarios/search1" method="post">
+    <div class="col-sm-8">
+        <input name="search1" class="form-control" id="search1" type="text"   placeholder="Filtrar Questao " >   
+    </div>
+
+    <div class="col-sm-1">
+      <button class="btn btn-primary btn-sm pull-left" type="submit">Filtrar</button>
+    </div>
+
+  </form>
+</div>
+ 
+	<div class="col-sm-1">
+		<a title="newUser" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_questao">Nova questão</a>
+	</div>  
+
+	<div id="list" class="row">
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped" cellspacing="30" cellpadding="30" id="questoes">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Titulo</th>
+						<th>Descriçao</th>
+						<th>Tipo</th>
+						<th class="actions">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+
+					<?php foreach ( $questao as $questao ) {?>
+						<tr>
+							<td><?php echo $questao->id_questao; ?></td> 
+							<td><?php echo $questao->titulo; ?></td>    
+							<td><?php echo $questao->descricao; ?></td>
+							<td><?php echo $questao->tipo; ?> </td>
+							<td class="actions">
+                <a title="Editar" class="btn btn-warning btn-sm fa fa-pencil-square-o"
+                    href="<?php echo base_url() . 'questoes/editar/' . $questao->id_questao; ?>"></a>
+                <a title="Deletar" class="btn btn-danger btn-sm fa fa-trash" 
+                    href="<?php echo base_url() . 'questoes/deletar/' . $questao->id_questao; ?>" onclick="return confirm('Confirma a exclusão deste registro?')"></a>
+							</td>		
+
+						</tr>	 	 	  	
+						  	
+				 	<?php } ?>
+				</tbody>
+			</table>
+			 <h4><?php echo $this->session->flashdata('mensagem');?></h4>
+        <h4><?php echo $this->session->flashdata('mensagemErro');?></h4>
+		</div>
+	</div>	
+
+    <div class="row">
+      <div class="col-sm-10" >
+        <?php echo $pagination; ?>
+      </div>
+    </div>
+
+</body>
+
+<!-- Modal de inserir questao-->
+<div class="modal fade" id="new_questao" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header  bg-red">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Adicionar questao</h4>
+      </div>
+      <div class="modal-body">
+       
+  <?php echo form_open('questoes/inserir', 'id="form-questao"'); ?>
+    
+    <form action="" method="post" ENCTYPE="multipart/form-data">
+      <div class="row">
+        <div class="form-group col-md-5">
+            <label for="titulo">titulo</label> 
+            <input type="text" class="form-control" id="titulo" name="titulo"
+                placeholder="informe o titulo" required
+                value="<?php echo isset($view_titulo) ? $view_titulo: '' ; ?>">
+        </div>     
+        <div class="form-group col-md-5">
+            <label for="tipo">tipo</label> 
+            <input type="text" class="form-control" id="tipo" name="tipo"
+                placeholder="informe o tipo" required
+                value="<?php echo isset($view_tipo) ? $view_tipo: '' ; ?>">
+        </div>
+    	</div>
+    
+     <div class="row">
+        <div class="form-group col-md-5">
+            <label for="descricao">descricao</label> 
+            <input type="textarea" class="form-control" id="descricao" name="descricao"
+                placeholder="informe email" required
+                value="<?php echo isset($view_descricao) ? $view_descricao: '' ; ?>">
+        </div>
+
+    	</div>
+			<div class="row">
+				<div class="col-md-12">
+						<input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+								<a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+				</div>
+
+    <?php echo form_close(); ?>
+
+		</div>
+
+      </div>
+    </div>
+  </div>
+</div> <!-- /.modal -->
+
+</html>

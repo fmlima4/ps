@@ -21,7 +21,7 @@
 </div>
  
 	<div class="col-sm-1">
-		<a title="newUser" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_cliente">Novo Usuario</a>
+		<a title="newUser" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_user">Novo Usuario</a>
 	</div>  
 
 	<div id="list" class="row">
@@ -30,9 +30,9 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Username</th>
-						<th>Cargo</th>
-						<th>Ativo</th>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Classe</th>
 						<th class="actions">Ações</th>
 					</tr>
 				</thead>
@@ -41,15 +41,15 @@
 
 					<?php foreach ( $usuario as $user ) {?>
 						<tr>
-							<td><?php echo $user->id; ?></td> 
-							<td><?php echo $user->username; ?></td>    
-							<td><?php echo $user->cargo; ?></td>
-							<td><?php echo $user->ativo; ?> </td>
+							<td><?php echo $user->id_usuario; ?></td> 
+							<td><?php echo $user->nome_usuario; ?></td>    
+							<td><?php echo $user->email_usuario; ?></td>
+							<td><?php echo $user->tipo_usuario; ?> </td>
 							<td class="actions">
                 <a title="Editar" class="btn btn-warning btn-sm fa fa-pencil-square-o"
-                    href="<?php echo base_url() . 'usuarios/editar/' . $user->id; ?>"></a>
+                    href="<?php echo base_url() . 'usuarios/editar/' . $user->id_usuario; ?>"></a>
                 <a title="Deletar" class="btn btn-danger btn-sm fa fa-trash" 
-                    href="<?php echo base_url() . 'usuarios/deletar/' . $user->id; ?>" onclick="return confirm('Confirma a exclusão deste registro?')"></a>
+                    href="<?php echo base_url() . 'usuarios/deletar/' . $user->id_usuario; ?>" onclick="return confirm('Confirma a exclusão deste registro?')"></a>
 							</td>		
 
 						</tr>	 	 	  	
@@ -71,7 +71,7 @@
 </body>
 
 <!-- Modal de inserir cliente-->
-<div class="modal fade" id="new_cliente" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+<div class="modal fade" id="new_user" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
   <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header  bg-red">
@@ -85,25 +85,25 @@
     <form action="" method="post" ENCTYPE="multipart/form-data">
       <div class="row">
         <div class="form-group col-md-5">
-            <label for="username">Username</label> 
-            <input type="text" class="form-control" id="username" name="username"
+            <label for="nome_usuario">Nome</label> 
+            <input type="text" class="form-control" id="nome_usuario" name="nome_usuario"
                 placeholder="informe o nome" required
-                value="<?php echo isset($view_username) ? $view_username: '' ; ?>">
+                value="<?php echo isset($view_nome_usuario) ? $view_nome_usuario: '' ; ?>">
         </div>     
         <div class="form-group col-md-5">
-            <label for="cargo">Cargo</label> 
-            <input type="text" class="form-control" id="cargo" name="cargo"
-                placeholder="informe o Cargo" required
-                value="<?php echo isset($view_cargo) ? $view_cargo: '' ; ?>">
+            <label for="tipo_usuario">tipo</label> 
+            <input type="text" class="form-control" id="tipo_usuario" name="tipo_usuario"
+                placeholder="informe o tipo" required
+                value="<?php echo isset($view_tipo_usuario) ? $view_tipo_usuario: '' ; ?>">
         </div>
     	</div>
     
      <div class="row">
         <div class="form-group col-md-5">
-            <label for="ativo">Ativo</label> 
-            <input type="text" class="form-control" id="ativo" name="ativo"
-                placeholder="informe 1" required
-                value="<?php echo isset($view_ativo) ? $view_ativo: '' ; ?>">
+            <label for="email_usuario">Email</label> 
+            <input type="text" class="form-control" id="email_usuario" name="email_usuario"
+                placeholder="informe emial" required
+                value="<?php echo isset($view_email_usuario) ? $view_email_usuario: '' ; ?>">
         </div>
         <div class="form-group col-md-5">
 					<label for="password">Senha</label> 
@@ -112,21 +112,11 @@
 							value="<?php echo isset($view_password) ? $view_password : '' ; ?>">
         </div>
     	</div>
-
 			<div class="row">
-				<div class="form-group col-md-5">
-						<label for="email">email</label> 
-						<input type="text" class="form-control" id="email" name="email"
-								placeholder="informe um email" required
-								value="<?php echo isset($view_email) ? $view_email : '' ; ?>">
+				<div class="col-md-12">
+						<input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+								<a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
 				</div>
-				
-			</div>
-			<div class="row">
-					<div class="col-md-12">
-							<input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
-									<a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
-					</div>
 
     <?php echo form_close(); ?>
 

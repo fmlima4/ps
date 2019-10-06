@@ -142,7 +142,6 @@
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links 
         <li><a href="http://localhost/sistema/inicio"><i class="fa fa-line-chart"></i> <span>Inicio</span></a></li>-->
-        <li><a href="http://localhost/ps/clientes"><i class="fa fa-users"></i> <span>Clientes</span></a></li>
 				<li><a href="http://localhost/ps/questoes"><i class="fa fa-folder-open"></i> <span>Cadastrar Questões</span></a></li>     
         <li><a href="http://localhost/ps/questionarios"><i class="fa fa-folder-open"></i> <span>Montar Questionarios</span></a></li>  
 				<li><a href="http://localhost/ps/usuarios"><i class="fa fa-folder-open"></i> <span>Usuarios</span></a></li>        

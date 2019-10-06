@@ -46,7 +46,7 @@ class Usuarios extends CI_Controller {
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3):0;
 
 
-		$data['usuario'] = $this->model->listar('id','asc', $config['per_page'],$offset);
+		$data['usuario'] = $this->model->listar('id_usuario','asc', $config['per_page'],$offset);
 		$this->template->load('layout', 'usuarios_lista.phtml', $data);
 	}
 
@@ -60,11 +60,10 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<span>', '</span>');
 	
 		/* Define as regras para valida��o */
-		$this->form_validation->set_rules('username', 'username', 'required|max_length[40]');
-		$this->form_validation->set_rules('email', 'email', 'trim|required|max_length[20]');
+		$this->form_validation->set_rules('nome_usuario', 'nome_usuario', 'required|max_length[40]');
+		$this->form_validation->set_rules('email_usuario', 'email_usuario', 'trim|required|max_length[20]');
 		$this->form_validation->set_rules('password', 'password', 'trim|required|max_length[20]');
-		$this->form_validation->set_rules('cargo', 'cargo', 'trim|required|max_length[20]');
-		$this->form_validation->set_rules('ativo', 'ativo', 'trim|required|max_length[20]');
+		$this->form_validation->set_rules('tipo_usuario', 'tipo_usuario', 'trim|required|max_length[20]');
 
 
 		/* Executa a valida��o e caso houver erro chama a fun��o index do controlador */
@@ -76,12 +75,10 @@ class Usuarios extends CI_Controller {
 		} else {
 
 			/* Recebe os dados do formul�rio (vis�o) */
-			$data['id'] = ucwords($this->input->post('id'));
-			$data['email'] = ucwords($this->input->post('email'));
-			$data['username'] = ucwords($this->input->post('username'));
-			$data['password'] = ucwords($this->input->post('password'));
-			$data['ativo'] = ucwords($this->input->post('ativo'));
-			$data['cargo'] = ucwords($this->input->post('cargo'));
+			$data['email_usuario'] = ucwords($this->input->post('email_usuario'));
+			$data['nome_usuario'] = ucwords($this->input->post('nome_usuario'));
+			$data['tipo_usuario'] = ucwords($this->input->post('tipo_usuario'));
+			$data['password'] = ucwords($this->input->post('password'));		
 
 			
 			/* Chama a fun��o inserir do modelo */
@@ -119,8 +116,11 @@ class Usuarios extends CI_Controller {
 	 
 		/* Aqui estou definindo as regras de valida��o do formul�rio, assim como 
 		   na fun��o inserir do controlador, por�m estou mudando a forma de escrita */
-			 $this->form_validation->set_rules('username', 'username', 'required|max_length[40]');
-			 $this->form_validation->set_rules('email', 'email', 'trim|required|max_length[20]');
+			 $this->form_validation->set_rules('nome_usuario', 'nome_usuario', 'required|max_length[40]');
+			 $this->form_validation->set_rules('email_usuario', 'email_usuario', 'trim|required|max_length[20]');
+			 $this->form_validation->set_rules('password', 'password', 'trim|required|max_length[20]');
+			 $this->form_validation->set_rules('tipo_usuario', 'tipo_usuario', 'trim|required|max_length[20]');
+	 
 	
 		/* Executa a valida��o e caso houver erro chama a fun��o editar do controlador novamente */
 		if ($this->form_validation->run() === FALSE) {
@@ -128,9 +128,11 @@ class Usuarios extends CI_Controller {
 				redirect('usuarios');
 		} else 
 			/* Sen�o obt�m os dados do formul�rio */
-			$data['id'] = ucwords($this->input->post('id'));
-			$data['email'] = ucwords($this->input->post('email'));
-			$data['username'] = ucwords($this->input->post('username'));
+			$data['id_usuario'] = ucwords($this->input->post('id_usuario'));
+			$data['email_usuario'] = ucwords($this->input->post('email_usuario'));
+			$data['nome_usuario'] = ucwords($this->input->post('nome_usuario'));
+			$data['tipo_usuario'] = ucwords($this->input->post('tipo_usuario'));
+			$data['password'] = ucwords($this->input->post('password'));		
 			
 	 
 			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
