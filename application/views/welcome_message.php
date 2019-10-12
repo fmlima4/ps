@@ -60,12 +60,17 @@
                                         <label class="sr-only" for="form-password">Password</label>
                                         <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
                                     </div>
-                                    <button type="submit" class="btn">Sign in!</button>
+                                    <button type="submit" class="btn">Loggar!</button>
                                 </form>
                             <?php echo form_close(); ?>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-1">
+		               <a title="newUser" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_User">Ainda nao se Cadastrou ?</a>
+	                </div>  
+
 
                 <!--
                     <div class="row">
@@ -91,7 +96,7 @@
         </div>
 
 
-        Javascript
+       <!-- Javascript-->
         <script src="includes/loginstyle/js/jquery-1.11.1.min.js"></script>
         <script src="includes/loginstyle/bootstrap/js/bootstrap.min.js"></script>
         <script src="includes/loginstyle/js/jquery.backstretch.min.js"></script>
@@ -100,6 +105,94 @@
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
+
+    
+<!-- Modal de inserir cliente-->
+<div class="modal fade" id="new_User" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header  bg-red">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Cadastro de usuario</h4>
+      </div>
+      <div class="modal-body">
+       
+  <?php echo form_open('login/cadastro', 'id="form-usuario"'); ?>
+    
+    <form action="" method="post" ENCTYPE="multipart/form-data">
+      <div class="row">
+        <div class="form-group col-md-6">
+            <label for="nome_usuario">Nome do Usuario</label> 
+            <input type="text" class="form-control" id="nome_usuario" name="nome_usuario"
+                placeholder="informe o nome do usuario" required
+                value="<?php echo isset($view_nome_usuario) ? $view_nome_usuario: '' ; ?>">
+        </div>     
+        <div class="form-group col-md-6">
+            <label for="email_usuario">email</label> 
+            <input type="text" class="form-control" id="email_usuario" name="email_usuario"
+                placeholder="informe o CPF" required
+                value="<?php echo isset($view_email_usuario) ? $view_email_usuario: '' ; ?>">
+        </div>
+    </div>
+    
+
+     <div class="row">
+        <div class="form-group col-md-6">
+            <label for="password2">Confrime a Senha</label> 
+            <input type="text" class="form-control" id="password2" name="password2"
+                placeholder="repita a senha" required
+                value="<?php echo isset($view_password2) ? $view_password2: '' ; ?>">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="password">Senha</label> 
+            <input type="text" class="form-control" id="password" name="password"
+                placeholder="informe uma senha" required
+                value="<?php echo isset($view_password) ? $view_password: '' ; ?>">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="tipo_usuario">voce é</label> 
+            <select class="custom-select" id="tipo_usuario" name="tipo_usuario">
+                <option selected value="1">Estudante</option>
+                <option value="2">Professor</option>
+                <option value="3">Funcionario</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="sexo">Sexo</label> 
+            <select class="custom-select" id="sexo_select" name="sexo_select">
+							<option selected value="1">Feminino</option>
+							<option value="2">Masculino</option>
+						</select>
+        </div>
+    </div>
+
+    <div class="row">
+        
+        <div class="form-group col-md-6">
+            <label for="idade">Idade</label> 
+            <input type="text" class="form-control" id="idade" name="idade"
+                placeholder="informe uma idade" required
+                value="<?php echo isset($view_idade) ? $view_idade : '' ; ?>">
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" name="btsalvar" value="Salvar" /> 
+                <a onClick="history.go(-1)" class="btn btn-default">Cancelar</a>
+        </div>
+
+    <?php echo form_close(); ?>
+
+		</div>
+
+      </div>
+    </div>
+  </div>
+</div> <!-- /.modal -->
 
     </body>
 
