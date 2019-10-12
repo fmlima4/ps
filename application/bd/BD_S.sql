@@ -45,3 +45,30 @@ CONSTRAINT fk_respostas2 FOREIGN KEY (id_questionario)references questionario(id
 CONSTRAINT fk_respostas3 FOREIGN KEY (id_usuario)references users(id_usuario)
 );
 
+create table questionario_demografico(
+id_questionario_demografico tinyint(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+id_usuario tinyint(4) NOT NULL,
+data_resp timestamp NOT NULL,
+nome_respondente varchar(100) NOT NULL,
+idade_respondente varchar(3) NOT NULL,
+ec_respondente varchar(100) NOT NULL,
+cidade_respondente varchar(100) NOT NULL,
+qtd_automoveis varchar(100) NOT NULL,
+qtd_empregados varchar(100) NOT NULL,
+qtd_maquina_lavar varchar(100) NOT NULL,
+qtd_banheiro varchar(100) NOT NULL,
+qtd_dvd varchar(100) NOT NULL,
+qtd_geladeira varchar(100) NOT NULL,
+qtd_freezer varchar(100) NOT NULL,
+qtd_pc varchar(100) NOT NULL,
+qtd_lava varchar(100) NOT NULL,
+qtd_micro varchar(100) NOT NULL,
+qtd_moto varchar(100) NOT NULL,
+qtd_secadora varchar(100) NOT NULL,
+origem_agua varchar(100) NOT NULL,
+tipo_rua varchar(100) NOT NULL,
+renda varchar(100) NOT NULL,
+escolaridade_chefe varchar(100) NOT NULL, 
+CONSTRAINT fk_questionario_demografico1 FOREIGN KEY (id_usuario)references users(id_usuario),
+);
+

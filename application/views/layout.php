@@ -2,6 +2,7 @@
 
 <html>
 <head>
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- REQUIRED JS SCRIPTS -->
@@ -142,6 +143,7 @@
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links 
         <li><a href="http://localhost/sistema/inicio"><i class="fa fa-line-chart"></i> <span>Inicio</span></a></li>-->
+				<li><a href="http://localhost/ps/demograficos"><i class="fa fa-folder-open"></i> <span>Questionario Demografico</span></a></li>     
 				<li><a href="http://localhost/ps/questoes"><i class="fa fa-folder-open"></i> <span>Cadastrar Questões</span></a></li>     
         <li><a href="http://localhost/ps/questionarios"><i class="fa fa-folder-open"></i> <span>Montar Questionarios</span></a></li>  
 				<li><a href="http://localhost/ps/usuarios"><i class="fa fa-folder-open"></i> <span>Usuarios</span></a></li>        
