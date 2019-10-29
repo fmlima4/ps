@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <div class="row" >
+        <h3>Seja bem Vindo <?php echo ($_SESSION['usuario_logado']['nome_usuario']);?></h3><br />
+    </div>    
+    <!--valido se ja prencheu o demografico alguma vez--> 
+        <?php 
+        //print_r($dados_estudante[0]->demografico_preench);
+    if( isset($dados_estudante[0]->demografico_preench)){?>
+    <div class="row" >
+        <p>Segue a implantação dos proximos formularios</p>
+    <?php }else{ ?>
+        <p> Para continuar voce precisa preencher o   
+        <a title="Editar" class="btn btn-warning btn-sm fa fa-pencil-square-o"
+                    href="<?php echo base_url() . 'demograficos' ?>">Questionario Socio-Demografico</a></p>
+    <?php }  ?>
+    </div>
+</body>
+
+</html>

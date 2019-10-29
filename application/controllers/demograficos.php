@@ -117,13 +117,13 @@ class Demograficos extends CI_Controller {
 	function editar($id_demografico)  {
 			
 		/* Aqui vamos definir o t�tulo da p�gina de edi��o */
-		$this->template->set('title', 'Editar demograficos');
+		$this->template->set('title', 'visualizar resposta demografico');
 	 
 		/* Busca os dados da pessoa que ser� editada */
 		$data['dados_demografico'] = $this->model->editar($id_demografico);
 	 
 	 	/* Carrega a p�gina de edi��o com os dados da pessoa */
-		$this->template->load('layout', 'demografico.phtml', $data);
+		$this->template->load('layout', 'demografico_edit.phtml', $data);
 
 	}
 

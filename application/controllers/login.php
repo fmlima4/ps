@@ -17,8 +17,13 @@ class Login extends CI_Controller{ // criação da classe Login
         $usuario = $this->usuarios_model->buscaPorEmailSenha($email,$password); // acessa a função buscaPorEmailSenha do modelo
          
         if($usuario){
+            //print_r($usuario['tipo_usuario']);
             $this->session->set_userdata('usuario_logado', $usuario);
-            Redirect('http://localhost/ps/usuarios');
+            if($usuario['tipo_usuario'] == 1){
+                Redirect('http://localhost/ps/estudante');
+            }else{
+                Redirect('http://localhost/ps/demograficos/respostas');
+            }
         }else{
              $this->session->set_flashdata('alert', 'Usuario ou senha incorretos');
                 }

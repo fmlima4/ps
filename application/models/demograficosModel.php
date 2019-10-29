@@ -30,7 +30,7 @@ class demograficosModel extends CI_Model {
 	}
 
 	function editar($id_demografico) {
-	    $this->db->where('id_demografico', $id_demografico);
+	    $this->db->where('id_questionario_demografico', $id_demografico);
 	    $query = $this->db->get('questionario_demografico');
 	    return $query->result();
 	}
