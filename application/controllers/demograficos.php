@@ -19,7 +19,7 @@ class Demograficos extends CI_Controller {
 
 	}
 
-	function index2()
+	function respostas()
 	{
 		$this->template->set('title', 'Lista de Demograficos');
 
@@ -38,7 +38,7 @@ class Demograficos extends CI_Controller {
 			"prev_link" => "Anterior",
 			"prev_tag_open" => "<li class='prev'>",
 			"prev_tag_close" => "</li>",
-			"next_link" => "Pr�xima",
+			"next_link" => "Proxima",
 			"next_tag_open" => "<li class='next'>",
 			"next_tag_close" => "</li>",
 			"last_tag_open" => "<li>",
@@ -56,7 +56,7 @@ class Demograficos extends CI_Controller {
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3):0;
 
 
-		$data['demografico'] = $this->model->listar('id_demografico','asc', $config['per_page'],$offset);
+		$data['demografico'] = $this->model->listar('id_questionario_demografico','asc', $config['per_page'],$offset);
 		$this->template->load('layout', 'demografico_lista.phtml', $data);
 	}
 
@@ -81,32 +81,33 @@ class Demograficos extends CI_Controller {
 			$usuario = $this->session->userdata('usuario_logado'); 
 			$data['id_usuario'] = $usuario['id_usuario'];
 			$data['nome_respondente'] = ucwords($this->input->post('nome_respondente'));
-			$data['idade_respondente'] = ucwords($this->input->post('idade_respondente'));
-			$data['ec_respondente'] = ucwords($this->input->post('ec_respondente'));
-			$data['cidade_respondente'] = ucwords($this->input->post('cidade_respondente'));
-			$data['qtd_automoveis'] = ucwords($this->input->post('qtd_automoveis'));
-			$data['qtd_maquina_lavar'] = ucwords($this->input->post('qtd_maquina_lavar'));
-			$data['qtd_banheiro'] = ucwords($this->input->post('qtd_banheiro'));
-			$data['qtd_dvd'] = ucwords($this->input->post('qtd_dvd'));
-			$data['qtd_geladeira'] = ucwords($this->input->post('qtd_geladeira'));
-			$data['qtd_freezer'] = ucwords($this->input->post('qtd_freezer'));
-			$data['qtd_pc'] = ucwords($this->input->post('qtd_pc'));
-			$data['qtd_lava'] = ucwords($this->input->post('qtd_lava'));
-			$data['qtd_micro'] = ucwords($this->input->post('qtd_micro'));
-			$data['qtd_moto'] = ucwords($this->input->post('qtd_moto'));
-			$data['qtd_secadora'] = ucwords($this->input->post('qtd_secadora'));
-			$data['origem_agua'] = ucwords($this->input->post('origem_agua'));
-			$data['tipo_rua'] = ucwords($this->input->post('tipo_rua'));
-			$data['renda'] = ucwords($this->input->post('renda'));
-			$data['escolaridade_chefe'] = ucwords($this->input->post('escolaridade_chefe'));
+			$data['idade_respondente'] = $this->input->post('idade_respondente');
+			$data['ec_respondente'] = $this->input->post('ec_select');
+			$data['cidade_respondente'] = $this->input->post('cidade_respondente');
+			$data['qtd_automoveis'] = $this->input->post('qtd_automoveis');
+			$data['qtd_empregados'] = $this->input->post('qtd_empregados');
+			$data['qtd_maquina_lavar'] = $this->input->post('qtd_maquina_lavar');
+			$data['qtd_banheiro'] = $this->input->post('qtd_banheiro');
+			$data['qtd_dvd'] = $this->input->post('qtd_dvd');
+			$data['qtd_geladeira'] = $this->input->post('qtd_geladeira');
+			$data['qtd_freezer'] = $this->input->post('qtd_freezer');
+			$data['qtd_pc'] = $this->input->post('qtd_pc');
+			$data['qtd_lava'] = $this->input->post('qtd_lava');
+			$data['qtd_micro'] = $this->input->post('qtd_micro');
+			$data['qtd_moto'] = $this->input->post('qtd_moto');
+			$data['qtd_secadora'] = $this->input->post('qtd_secadora');
+			$data['origem_agua'] = $this->input->post('origem_agua');
+			$data['tipo_rua'] = $this->input->post('tipo_rua');
+			$data['renda'] = $this->input->post('renda');
+			$data['escolaridade_chefe'] = $this->input->post('escolaridade_chefe_select');
 
 			
 			/* Chama a fun��o inserir do modelo */
 			if ($this->model->inserir($data)) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Questao salva com sucesso</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Questionario salvo com sucesso</div>");
 				redirect('demograficos');
 			} else {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao inserir cliente</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro </div>");
 				redirect('demograficos');
 			}
 

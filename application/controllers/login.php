@@ -57,7 +57,7 @@ class Login extends CI_Controller{ // criação da classe Login
 		} else {
 
 			/* Recebe os dados do formul�rio (vis�o) */
-			$data['email_usuario'] = ucwords($this->input->post('email_usuario'));
+			$data['email_usuario'] = $this->input->post('email_usuario');
             $data['nome_usuario'] = ucwords($this->input->post('nome_usuario'));
             $data['password'] = $this->input->post('password');		
             $data['tipo_usuario'] = $this->input->post('tipo_usuario');

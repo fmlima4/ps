@@ -12,14 +12,14 @@ class demograficosModel extends CI_Model {
 		return $this->db->insert('questionario_demografico', $data);
 	}
 
-	function listar($sort = 'id_demografico', $order = 'asc', $limit =null, $offset = null) {
+	function listar($sort = 'id_questionario_demografico', $order = 'asc', $limit =null, $offset = null) {
 		$this->db->order_by($sort, $order);
 
 		if($limit){
 			$this->db->limit($limit,$offset);
 		}
 
-		$this->db->select('titulo, descricao, id_demografico, tipo');
+		$this->db->select('nome_respondente, data_resp, id_questionario_demografico');
 	 	$this->db->from('questionario_demografico');
 		$query = $this->db->get(); 
 	    return $query->result();

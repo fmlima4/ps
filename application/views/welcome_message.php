@@ -130,7 +130,7 @@
         <div class="form-group col-md-6">
             <label for="email_usuario">email</label> 
             <input type="text" class="form-control" id="email_usuario" name="email_usuario"
-                placeholder="informe o CPF" required
+                placeholder="informe o seu email" required
                 value="<?php echo isset($view_email_usuario) ? $view_email_usuario: '' ; ?>">
         </div>
     </div>
@@ -138,13 +138,13 @@
 
      <div class="row">
         <div class="form-group col-md-6">
-            <label for="password2">Confrime a Senha</label> 
+            <label for="password2">Senha</label> 
             <input type="text" class="form-control" id="password2" name="password2"
                 placeholder="repita a senha" required
                 value="<?php echo isset($view_password2) ? $view_password2: '' ; ?>">
         </div>
         <div class="form-group col-md-6">
-            <label for="password">Senha</label> 
+            <label for="password">Confirme a Senha</label> 
             <input type="text" class="form-control" id="password" name="password"
                 placeholder="informe uma senha" required
                 value="<?php echo isset($view_password) ? $view_password: '' ; ?>">
@@ -153,7 +153,7 @@
 
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="tipo_usuario">voce é</label> 
+            <label for="tipo_usuario">Voce é</label> 
             <select class="custom-select" id="tipo_usuario" name="tipo_usuario">
                 <option selected value="1">Estudante</option>
                 <option value="2">Professor</option>
@@ -163,9 +163,9 @@
         <div class="form-group col-md-6">
             <label for="sexo">Sexo</label> 
             <select class="custom-select" id="sexo_select" name="sexo_select">
-							<option selected value="1">Feminino</option>
-							<option value="2">Masculino</option>
-						</select>
+                <option selected value="1">Feminino</option>
+                <option value="2">Masculino</option>
+            </select>
         </div>
     </div>
 

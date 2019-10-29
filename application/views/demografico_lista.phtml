@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+<div class="row" >
+  <form action="/ps/usuarios/search1" method="post">
+    <div class="col-sm-8">
+        <input name="search1" class="form-control" id="search1" type="text"   placeholder="Filtrar usuario " >   
+    </div>
+
+    <div class="col-sm-1">
+      <button class="btn btn-primary btn-sm pull-left" type="submit">Filtrar</button>
+    </div>
+
+  </form>
+</div>
+
+	<div id="list" class="row">
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped" cellspacing="30" cellpadding="30" id="usuarios">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Respondente</th>
+                        <th>Data</th>
+						<th class="actions">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+
+					<?php foreach ( $demografico as $demografico ) {?>
+						<tr>
+							<td><?php echo $demografico->id_questionario_demografico; ?></td> 
+							<td><?php echo $demografico->nome_respondente; ?></td>    
+							<td><?php echo $demografico->data_resp; ?></td>
+							<td class="actions">
+                            <a title="Visualizar" class="btn btn-warning btn-sm fa fa-pencil-square-o"
+                                href="<?php echo base_url() . 'demograficos/editar/' . $demografico->id_questionario_demografico; ?>"></a>
+							</td>		
+						</tr>	 	 	  	
+						  	
+				 	<?php } ?>
+				</tbody>
+			</table>
+			 <h4><?php echo $this->session->flashdata('mensagem');?></h4>
+        <h4><?php echo $this->session->flashdata('mensagemErro');?></h4>
+		</div>
+	</div>	
+
+    <div class="row">
+      <div class="col-sm-10" >
+        <?php echo $pagination; ?>
+      </div>
+    </div>
+
+</body>
+</html>

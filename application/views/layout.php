@@ -34,6 +34,7 @@
   
 </head>
 <body class="hold-transition skin-green sidebar-mini">
+<?php// print_r ($_SESSION['usuario_logado']['nome_usuario']); ?>
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -61,7 +62,7 @@
               <!-- The user image in the navbar -
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               hidden-xs hides the username on small devices so only the image appears. -->
-              <!--<span class="hidden-xs"><?php print_r (ucwords(($_SESSION['usuario_logado']['username']))); ?> </span>-->
+              <!--<span class="hidden-xs"><?php echo (ucwords(($_SESSION['usuario_logado']['username']))); ?> </span>-->
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu  
@@ -139,16 +140,23 @@
       /.search form -->
 
       <!-- Sidebar Menu -->
+      
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links 
         <li><a href="http://localhost/sistema/inicio"><i class="fa fa-line-chart"></i> <span>Inicio</span></a></li>-->
-				<li><a href="http://localhost/ps/demograficos"><i class="fa fa-folder-open"></i> <span>Questionario Demografico</span></a></li>     
-				<li><a href="http://localhost/ps/questoes"><i class="fa fa-folder-open"></i> <span>Cadastrar Questões</span></a></li>     
-        <li><a href="http://localhost/ps/questionarios"><i class="fa fa-folder-open"></i> <span>Montar Questionarios</span></a></li>  
-				<li><a href="http://localhost/ps/usuarios"><i class="fa fa-folder-open"></i> <span>Usuarios</span></a></li>        
-        <li><a href="http://localhost/ps/login/logout" onclick="return confirm('Deseja sair?')">
-        <i class="fa fa-sign-out"></i> <span>Sair</span></a>
+				<?php if ($_SESSION['usuario_logado']['tipo_usuario'] == '1' || $_SESSION['usuario_logado']['tipo_usuario'] == '3' ) { ?>
+          <li><a href="http://localhost/ps/demograficos"><i class="fa fa-folder-open"></i> <span>Questionario Demografico</span></a></li>     
+          <li><a href="http://localhost/ps/login/logout" onclick="return confirm('Deseja sair?')">
+          <i class="fa fa-sign-out"></i> <span>Sair</span></a>
+        <?php } else { ?>
+          <li><a href="http://localhost/ps/demograficos/respostas"><i class="fa fa-folder-open"></i> <span>Respostas Demograficos</span></a></li>     
+          <li><a href="http://localhost/ps/questoes"><i class="fa fa-folder-open"></i> <span>Cadastrar Questões</span></a></li>     
+          <li><a href="http://localhost/ps/questionarios"><i class="fa fa-folder-open"></i> <span>Montar Questionarios</span></a></li>  
+          <li><a href="http://localhost/ps/usuarios"><i class="fa fa-folder-open"></i> <span>Usuarios</span></a></li>        
+          <li><a href="http://localhost/ps/login/logout" onclick="return confirm('Deseja sair?')">
+          <i class="fa fa-sign-out"></i> <span>Sair</span></a>
+        <?php }?>
       </ul>
 
       <!-- /.sidebar-menu -->
