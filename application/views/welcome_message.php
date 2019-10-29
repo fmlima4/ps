@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-1">
+                    <div class="d-flex justify-content-center" style="margin-top: 20px;" >
 		               <a title="newUser" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#new_User">Ainda nao se Cadastrou ?</a>
 	                </div>  
 

@@ -83,7 +83,7 @@ class Usuarios extends CI_Controller {
 			
 			/* Chama a fun��o inserir do modelo */
 			if ($this->model->inserir($data)) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Cliente salvo com sucesso</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> usuario salvo com sucesso</div>");
 				redirect('usuarios');
 			} else {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao inserir usuario</div>");
@@ -128,16 +128,16 @@ class Usuarios extends CI_Controller {
 				redirect('usuarios');
 		} else 
 			/* Sen�o obt�m os dados do formul�rio */
-			$data['id_usuario'] = ucwords($this->input->post('id_usuario'));
-			$data['email_usuario'] = ucwords($this->input->post('email_usuario'));
-			$data['nome_usuario'] = ucwords($this->input->post('nome_usuario'));
-			$data['tipo_usuario'] = ucwords($this->input->post('tipo_usuario'));
-			$data['password'] = ucwords($this->input->post('password'));		
+			$data['id_usuario'] = $this->input->post('id_usuario');
+			$data['email_usuario'] = $this->input->post('email_usuario');
+			$data['nome_usuario'] = $this->input->post('nome_usuario');
+			$data['tipo_usuario'] = $this->input->post('tipo_usuario');
+			$data['password'] = $this->input->post('password');		
 			
 	 
 			/* Executa a fun��o atualizar do modelo passando como par�metro os dados obtidos do formul�rio */
 			if ($this->model->atualizar($data)) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> Cliente editado com sucesso</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-success'> usuario editado com sucesso</div>");
 				redirect('usuarios');
 			} else {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao editar usuario</div>");
@@ -149,7 +149,7 @@ class Usuarios extends CI_Controller {
 		/* Executa a fun��o deletar do modelo passando como par�metro o id da pessoa */
 		$confirmacao = $this->model->deletar($id);
 		if ($confirmacao == 1) {
-				$this->session->set_flashdata('mensagem', "<div class='alert alert-warning'> Cliente deletado com sucesso</div>");
+				$this->session->set_flashdata('mensagem', "<div class='alert alert-warning'> usuario deletado com sucesso</div>");
 			redirect('usuarios');
 			} else {
 				$this->session->set_flashdata('mensagem', "<div class='alert alert-danger'> Erro ao deletar usuario</div>");

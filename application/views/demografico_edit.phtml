@@ -8,6 +8,7 @@
 	<?php echo form_open('demografico/atualizar', 'id="form-demografico"'); ?>
  
 	<input type="hidden" name="id_questionario_demografico" value="<?php echo $dados_demografico[0]->id_questionario_demografico; ?>"/>
+
  	<div class="row">
         <div class="form-group col-md-5">
 			<label for="nome_usuario">nome_usuario:</label><br/>
@@ -29,7 +30,17 @@
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="ec_respondente">Estado Civil:</label><br/>
-			<input type="text" class="form-control" name="ec_respondente" value="<?php echo $dados_demografico[0]->ec_respondente; ?>"/>
+			<input type="text" class="form-control" name="ec_respondente" 
+			value="<?php 
+				if($dados_demografico[0]->ec_respondente==1){
+					echo 'Solteiro'; 
+				}elseif($dados_demografico[0]->ec_respondente==2){
+					echo 'Casado'; 					
+				}elseif($dados_demografico[0]->ec_respondente==3){
+					echo 'Viuvo'; 
+				}else{
+					echo 'Separado'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('ec_respondente'); ?></div>
 		</div> 
 	</div>
@@ -55,7 +66,17 @@
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="ec_respondente">Escolaridade:</label><br/>
-			<input type="text" class="form-control" name="ec_respondente" value="<?php echo $dados_demografico[0]->ec_respondente; ?>"/>
+			<input type="text" class="form-control" name="ec_respondente" 
+			value="<?php 
+				if($dados_demografico[0]->ec_respondente==1){
+					echo 'Solteiro'; 
+				}elseif($dados_demografico[0]->ec_respondente==2){
+					echo 'Casado'; 					
+				}elseif($dados_demografico[0]->ec_respondente==3){
+					echo 'Viuvo'; 
+				}else{
+					echo 'Separado'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('ec_respondente'); ?></div>
 		</div> 
 	</div>
@@ -64,12 +85,36 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="qtd_automoveis">qtd_automoveis:</label><br/>
-			<input type="text" class="form-control" name="qtd_automoveis" value="<?php echo $dados_demografico[0]->qtd_automoveis; ?>"/>
+			<input type="text" class="form-control" name="qtd_automoveis" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_automoveis'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="qtd_empregados">qtd_empregados:</label><br/>
-			<input type="text" class="form-control" name="qtd_empregados" value="<?php echo $dados_demografico[0]->qtd_empregados; ?>"/>
+			<input type="text" class="form-control" name="qtd_empregados" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_empregados'); ?></div>
 		</div> 
 	</div>
@@ -77,12 +122,36 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="qtd_maquina_lavar">qtd_maquina_lavar:</label><br/>
-			<input type="text" class="form-control" name="qtd_maquina_lavar" value="<?php echo $dados_demografico[0]->qtd_maquina_lavar; ?>"/>
+			<input type="text" class="form-control" name="qtd_maquina_lavar" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_maquina_lavar'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="qtd_banheiros">qtd_banheiros:</label><br/>
-			<input type="text" class="form-control" name="qtd_banheiros" value="<?php echo $dados_demografico[0]->qtd_banheiro; ?>"/>
+			<input type="text" class="form-control" name="qtd_banheiros" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_banheiros'); ?></div>
 		</div> 
 	</div>
@@ -90,12 +159,36 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="qtd_dvd">qtd_dvd:</label><br/>
-			<input type="text" class="form-control" name="qtd_dvd" value="<?php echo $dados_demografico[0]->qtd_dvd; ?>"/>
+			<input type="text" class="form-control" name="qtd_dvd" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_dvd'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="qtd_geladeira">qtd_geladeira:</label><br/>
-			<input type="text" class="form-control" name="qtd_geladeira" value="<?php echo $dados_demografico[0]->qtd_geladeira; ?>"/>
+			<input type="text" class="form-control" name="qtd_geladeira" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_geladeira'); ?></div>
 		</div> 
 	</div>
@@ -103,12 +196,36 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="qtd_freezer">qtd_freezer:</label><br/>
-			<input type="text" class="form-control" name="qtd_freezer" value="<?php echo $dados_demografico[0]->qtd_freezer; ?>"/>
+			<input type="text" class="form-control" name="qtd_freezer" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_freezer'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="qtd_pc">qtd_pc:</label><br/>
-			<input type="text" class="form-control" name="qtd_pc" value="<?php echo $dados_demografico[0]->qtd_pc; ?>"/>
+			<input type="text" class="form-control" name="qtd_pc" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_pc'); ?></div>
 		</div> 
 	</div>
@@ -116,12 +233,36 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="qtd_lava">qtd_lava:</label><br/>
-			<input type="text" class="form-control" name="qtd_lava" value="<?php echo $dados_demografico[0]->qtd_lava; ?>"/>
+			<input type="text" class="form-control" name="qtd_lava" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_lava'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="qtd_micro">qtd_micro:</label><br/>
-			<input type="text" class="form-control" name="qtd_micro" value="<?php echo $dados_demografico[0]->qtd_micro; ?>"/>
+			<input type="text" class="form-control" name="qtd_micro" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_micro'); ?></div>
 		</div> 
 	</div>
@@ -129,12 +270,36 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="qtd_lava">qtd_moto:</label><br/>
-			<input type="text" class="form-control" name="qtd_moto" value="<?php echo $dados_demografico[0]->qtd_moto; ?>"/>
+			<input type="text" class="form-control" name="qtd_moto" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_moto'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="qtd_secadora">qtd_secadora:</label><br/>
-			<input type="text" class="form-control" name="qtd_secadora" value="<?php echo $dados_demografico[0]->qtd_secadora; ?>"/>
+			<input type="text" class="form-control" name="qtd_secadora" 
+			value="<?php 
+				if($dados_demografico[0]->qtd_automoveis==1){
+					echo 'Não possui'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==2){
+					echo '1'; 					
+				}elseif($dados_demografico[0]->qtd_automoveis==3){
+					echo '2'; 
+				}elseif($dados_demografico[0]->qtd_automoveis==4){
+					echo '3'; 
+				}else{
+					echo '4+'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('qtd_secadora'); ?></div>
 		</div> 
 	</div>
@@ -142,25 +307,67 @@
     <div class="row">
 		<div class="form-group col-md-5">
 			<label for="origem_agua">origem_agua:</label><br/>
-			<input type="text" class="form-control" name="origem_agua" value="<?php echo $dados_demografico[0]->origem_agua; ?>"/>
+			<input type="text" class="form-control" name="origem_agua" 
+			value="<?php 
+				if($dados_demografico[0]->origem_agua==1){
+					echo 'Rede geral de distribuição'; 
+				}elseif($dados_demografico[0]->origem_agua==2){
+					echo 'Poço ou Nascente'; 					
+				}else{
+					echo 'Outro Meio'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('origem_agua'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="tipo_rua">tipo_rua:</label><br/>
-			<input type="text" class="form-control" name="tipo_rua" value="<?php echo $dados_demografico[0]->tipo_rua; ?>"/>
+			<input type="text" class="form-control" name="tipo_rua"
+			value="<?php 
+				if($dados_demografico[0]->tipo_rua==1){
+					echo 'Asfaltada/Pavimentada'; 
+				}else{
+					echo 'Terra/Cascalho'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('tipo_rua'); ?></div>
 		</div> 
 	</div>
 
     <div class="row">
 		<div class="form-group col-md-5">
-			<label for="renda">renda:</label><br/>
-			<input type="text" class="form-control" name="renda" value="<?php echo $dados_demografico[0]->renda; ?>"/>
+			<label for="renda">Renda:</label><br/>
+			<input type="text" class="form-control" name="renda" 
+			value="<?php 
+				if($dados_demografico[0]->escolaridade_chefe==1){
+					echo 'Até 2 salários minimos'; 
+				}elseif($dados_demografico[0]->escolaridade_chefe==2){
+					echo '2 a 4 salários minimos'; 
+				}elseif($dados_demografico[0]->escolaridade_chefe==3){
+					echo '4 a 10 salários minimos'; 					
+				}elseif($dados_demografico[0]->escolaridade_chefe==4){
+					echo '10 a 20 salários minimos'; 
+				}else{
+					echo '20+ salários minimos'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('renda'); ?></div>
 		</div> 
 		<div class="form-group col-md-5">
 			<label for="escolaridade_chefe">escolaridade_chefe:</label><br/>
-			<input type="text" class="form-control" name="escolaridade_chefe" value="<?php echo $dados_demografico[0]->escolaridade_chefe; ?>"/>
+			<input type="text" class="form-control" name="escolaridade_chefe" 
+			value="<?php 
+				if($dados_demografico[0]->escolaridade_chefe==1){
+					echo 'Ensino Fundamental Completo ou Incompleto'; 
+				}elseif($dados_demografico[0]->escolaridade_chefe==2){
+					echo 'Ensino Médio Incompleto'; 
+				}elseif($dados_demografico[0]->escolaridade_chefe==3){
+					echo 'Ensino Superior Incompleto'; 					
+				}elseif($dados_demografico[0]->escolaridade_chefe==4){
+					echo 'Ensino Superior Completo'; 
+				}elseif($dados_demografico[0]->escolaridade_chefe==5){
+					echo 'Pós-Graduação'; 
+				}elseif($dados_demografico[0]->escolaridade_chefe==6){
+					echo 'Mestrado'; 
+				}else{
+					echo 'Doutorado'; 
+				}?>"/>
 			<div class="error"><?php echo form_error('escolaridade_chefe'); ?></div>
 		</div> 
 	</div>
